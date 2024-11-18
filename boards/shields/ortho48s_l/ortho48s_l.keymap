@@ -1,0 +1,31 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define DEFAULT 0
+#define LOWER 1
+
+/ {
+  keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+      display-name = "QWERTY";
+      bindings = <
+        &kp TAB &kp Q &kp W &kp E &kp R &kp T
+        &kp BACKSPACE &kp A &kp S &kp D &kp F &kp G
+        &kp LSHIFT &kp Z &kp X &kp C &kp V &kp B
+        &kp LCTRL &kp LMETA &kp ESC &kp LALT &kp SPACE &mo LOWER
+      >;
+    };
+    lower_layer {
+      display-name = "Numbers";
+      bindings = <
+        &bootloader &sys_reset &trans &trans &trans &trans
+        &kp GRAVE &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5
+        &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans &trans
+      >;
+    };
+    }
+  };
+};

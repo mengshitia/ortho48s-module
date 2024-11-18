@@ -1,0 +1,7 @@
+if SHIELD_MY_KEYBOARD
+
+# Name should less than 16 characters.
+  config ZMK_KEYBOARD_NAME
+    default "Ortho48s Left"
+
+endif
