@@ -1,3 +1,5 @@
+#include "ortho48s_l-layout.dtsi"
+
 &physical_layout0 {
   kscan = <&kscan0>;
   transform = <&matrix_transform0>;
