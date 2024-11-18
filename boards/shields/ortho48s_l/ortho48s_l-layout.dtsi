@@ -1,4 +1,9 @@
-#include "ortho48s_l-layout.dtsi"
+/ {
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+    };
+};
 
 &physical_layout0 {
   kscan = <&kscan0>;
