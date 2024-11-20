@@ -1,0 +1,21 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define DEFAULT 0
+#define MENU 1
+
+/ {
+  keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+      display-name = "QWERTY";
+      bindings = <
+        &kp Y &kp U &kp I &kp O &kp P &kp BACKSPACE
+        &kp H &kp J &kp K &kp L &kp SEMICOLON &kp ENTER
+        &kp N &kp M &kp COMMA &kp DOT &kp SLASH &kp RSHIFT
+        &mo MENU &kp SPACE &kp RALT &kp K_CONTEXT_MENU &kp RMETA &kp RCTRL
+      >;
+    };
+  };
+};
