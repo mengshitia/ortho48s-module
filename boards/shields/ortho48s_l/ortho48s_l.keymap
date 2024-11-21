@@ -26,7 +26,7 @@
       display-name = "Num&Fn";
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
-        &mt TILDE GRAVE &mt EXCLAMATION N1 &mt AT_SIGN N2 &mt HASH N3 &mt DOLLAR N4 &mt PERCENT N5
+        &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5
         &none &none &none &none &none &none
         &none &none &none &none &none &none
       >;
@@ -35,7 +35,7 @@
       display-name = "Menu";
       bindings = <
         &none &none &none &none &bootloader &sys_reset
-        &none &none &mo NUMPAD &mo BLUETOOTH &mo DEFAULT &none
+        &none &none &to NUMPAD &to BLUETOOTH &to DEFAULT &none
         &none &none &none &none &none &none
         &none &none &none &none &none &none
       >;
@@ -46,7 +46,7 @@
         &bt BT_CLR_ALL &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5
         &none &out OUT_USB &out OUT_BLE &bt BT_PRV &bt BT_NXT &bt BT_DISC
         &none &none &none &none &none &none
-        &none &none &none &none &none &mo MENU
+        &none &none &none &none &none &to MENU
       >;
     };
     Numpad_layer {
@@ -54,7 +54,7 @@
         &none &kp KP_DIVIDE &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_MINUS
         &none &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS
         &none &none &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_DOT
-        &none &none &none &mo MENU &kp KP_N0 &kp KP_EQUAL
+        &none &none &none &to MENU &kp KP_N0 &kp KP_EQUAL
       >;
     };
   };
