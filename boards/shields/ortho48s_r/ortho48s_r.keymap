@@ -61,7 +61,7 @@
     arrow_layer {
       display-name = "Arrow";
       bindings = <
-        &none &kp HOME &kp END &kp SCROLL_LOCK &kp PRINTSCREEN &none
+        &none &kp HOME &kp END &kp SCROLLLOCK &kp PRINTSCREEN &none
         &kp LEFT &kp DOWN &kp UP &kp RIGHT &none &kp ENTER
         &none &none &none &none &none &none
         &none &none &none &to MENU &none &none
