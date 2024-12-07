@@ -20,7 +20,7 @@
     };
     double_tap_clear_bluetooth_profile: tap_dance_bpclr {
       compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <1>;
+      #binding-cells = <0>;
       tapping-term-ms = <150>;
       bindings = <&none>, <&bt BT_CLR>;
     };
