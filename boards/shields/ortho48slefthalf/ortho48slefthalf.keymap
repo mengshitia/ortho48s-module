@@ -22,7 +22,7 @@
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <1>;
       tapping-term-ms = <150>;
-      bindings = <&none>, <&BT BT_CLR>;
+      bindings = <&none>, <&bt BT_CLR>;
     };
   };
 
