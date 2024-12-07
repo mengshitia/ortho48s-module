@@ -24,3 +24,5 @@ include:
 #    shield: ortho48s_r nice_view_adapter nice_view
   - board: nice_nano_v2
     shield: ortho48slefthalf nice_view_adapter nice_view
+  - board: nice_nano_v2
+    shield: ortho48srighthalf nice_view_adapter nice_view
