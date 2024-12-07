@@ -1,0 +1,12 @@
+file_format: "1"
+id: ortho48slefthalf
+name: ortho48slefthalf
+type: shield
+url: none
+requires:
+  - nice_nano_v2
+exposes:
+  - i2c_oled
+features:
+  - keys
+  - display

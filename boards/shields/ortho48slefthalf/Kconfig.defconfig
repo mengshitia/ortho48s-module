@@ -1,0 +1,8 @@
+if SHIELD_ORTHO48SLEFTHALF
+  config ZMK_KEYBOARD_NAME
+    default "Ortho48s Left"
+
+  config CONFIG_ZMK_HID_REPORT_TYPE_NKRO
+    default y
+
+endif
