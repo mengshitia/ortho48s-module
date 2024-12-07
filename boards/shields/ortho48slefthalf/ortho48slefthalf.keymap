@@ -12,17 +12,17 @@
 
 / {
   behaviors {
-    double_tap_menu: tap_dance_menu {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <150>;
-      bindings = <&none>, <&to MENU>;
-    };
     double_tap_clear_bluetooth_profile: tap_dance_bpclr {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <150>;
       bindings = <&none>, <&bt BT_CLR>;
+    };
+    double_tap_menu: tap_dance_menu {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <150>;
+      bindings = <&lt MEDIA &none>, <&to MENU>;
     };
   };
 
@@ -35,7 +35,7 @@
         &kp ESC &kp Q &kp W &kp E &kp R &kp T
         &kp TAB &kp A &kp S &kp D &kp F &kp G
         &kp LSHIFT &kp Z &kp X &kp C &kp V &kp B
-        &kp LCTRL &kp LGUI &lt MEDIA &double_tap_menu &kp LALT &kp SPACE &mo LOWER
+        &kp LCTRL &kp LGUI &double_tap_menu &kp LALT &kp SPACE &mo LOWER
       >;
     };
     lower_layer {
