@@ -43,7 +43,7 @@
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
         &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5
-        &trans &kp UP &kp DOWN &kp MINUS &kp EQUAL &kp BACKSLASH
+        &trans &kp DOWN &kp UP &kp MINUS &kp EQUAL &kp BACKSLASH
         &trans &trans &trans &trans &trans &none
       >;
     };
