@@ -1,0 +1,161 @@
+// Keymap for ortho48s.
+// General keycodes:
+#include <dt-bindings/zmk/keys.h>
+// Bluetooth commands:
+#include <dt-bindings/zmk/bt.h>
+// Output selection commands:
+#include <dt-bindings/zmk/outputs.h>
+
+#define DEFAULT 0
+// The Default layer, QWERTY layout,
+// with some function keys:
+// Esc, Tab, Shift, Ctrl, Meta, Alt, Backspace and Enter.
+
+#define LAY_1 1
+// This layer has Fn keys(F1~F12), numbers(1~0),
+// CapsLock and all extra signs: '"[{}]\|-_=+
+
+#define LAY_2 2
+// This layer is designed for gameplay,
+// but it could handle some scenes
+// which may require movements with arrow keys.
+// The left half has the same layout as the Default layer;
+// The right half has arrow keys(⭠⭣⭡➝),
+// Home, End, PageUp and PageDown functions,
+// while all the other letter keys are removed using '&none',
+// they are replaced with some other useful functions:
+// PrintScreen(where 'p' stays) and some macros.
+
+#define LAY_3 3
+// This layer is used to handle bluetooth commands.
+// It can cycle through all available bluetooth profiles,
+// disconnect, clear current profile, or clear all profiles.
+
+#define LAY_4 4
+// This layer is used to adjust volume.
+
+#define LAY_5 5
+// This layer is used to adjust the brightness of the screen.
+
+#define NAV 6
+// This layer sets several entrance for other layers:
+// Bluetooth(b), Game(g), Volume(v), Screen Brightness(s)...
+
+/{
+  keymap {
+    compatible = "zmk,keymap";
+    // Note: To prevent unexpected behaviors, set each key explicitly, do not use '&trans'.
+    default_layer {
+      display-name = "Default";
+// -----------------------------------------------------------------------------------------------------------
+// Esc      q       w       e       r       t               y       u       i       o       p       ←
+// Tab      a       s       d       f       g               h       j       k       l       ;:      ↵
+// LShift   z       x       c       v       b               n       m       ,<      .>      /?      RShift
+// LCtrl    LMeta   NAV     LAlt    ⍽       LAY_1           LAY_2   ⍽       RAlt    Menu    RMeta   RCtrl
+// -----------------------------------------------------------------------------------------------------------
+      bindings = <
+        &kp ESC     &kp Q     &kp W   &kp E     &kp R     &kp T         &kp Y     &kp U     &kp I     &kp O     &kp P         &kp BACKSPACE
+        &kp TAB     &kp A     &kp S   &kp D     &kp F     &kp G         &kp H     &kp J     &kp K     &kp L     &kp SEMICOLON &kp ENTER
+        &kp LSHIFT  &Kp Z     &kp X   &kp C     &kp V     &kp B         &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH     &kp RSHIFT
+        &kp LCTRL   &kp LMETA &to NAV &kp LALT  &kp SPACE &mo LAY_1     &mo LAY_2 &kp SPACE &kp RALT  &kp K_APP &kp RMETA     &kp RCTRL
+      >;
+    }; // End of 'default_layer'.
+    lay1_layer {
+      display-name = "Extras";
+// -----------------------------------------------------------------------------------------------------------
+// `~       F1      F2      F3      F4      F5              F6      F7      F8      F9      F10     Delete
+// ~        1!      2@      3#      4$      5%              6^      7&      8*      9(      0)      Enter
+// LShift   Caps    "       -_      =+      \|              '"      [{      ]}      F11     F12     RShift
+// LCtrl    LMeta   NAV     LAlt    ⍽       LAY_1           &none   ⍽       RAlt    Menu    RMeta   RCtrl
+// -----------------------------------------------------------------------------------------------------------
+      bindings = <
+        &kp GRAVE   &kp F1    &kp F2            &kp F3    &kp F4    &kp F5            &kp F6            &kp F7            &kp F8            &kp F9    &kp F10   &kp DEL
+        &kp TILDE   &kp N1    &kp N2            &kp N3    &kp N4    &kp N5            &kp N6            &kp N7            &kp N8            &kp N9    &kp N0    &kp ENTER
+        &kp LSHIFT  &kp CAPS  &kp DOUBLE_QUOTES &kp MINUS &kp EQUAL &kp BACKSLASH     &kp SINGLE_QUOTE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET &kp F11   &kp F12   &kp RSHIFT
+        &kp LCTRL   &kp LMETA &to NAV           &kp LALT  &kp SPACE &mo LAY_1         &none             &kp SPACE         &kp RALT          &kp K_APP &kp RMETA &kp RCTRL
+      >;
+    }; // End of 'lay1_layer'.
+    lay2_layer {
+      display-name = "Game";
+// ---------------------------------------------------------------------------------------------------------------------
+// Esc      q       w       e       r       t               PageUp      Home    ⭡       End     PrintScreen   ←
+// Tab      a       s       d       f       g               PageDown    ⭠       ⭣       ➝       &none         ↵
+// LShift   z       x       c       v       b               &none       &none   &none   &none   &none         RShift
+// LCtrl    LMeta   NAV     LAlt    ⍽       &none           LAY_2       ⍽       RAlt    Menu    RMeta         RCtrl
+// ---------------------------------------------------------------------------------------------------------------------
+      bindings = <
+        &kp ESC     &kp Q     &kp W   &kp E     &kp R     &kp T     &kp PAGE_UP   &kp HOME  &kp UP    &kp END   &kp PRINTSCREEN &kp BACKSPACE
+        &kp TAB     &kp A     &kp S   &kp D     &kp F     &kp G     &kp PAGE_DOWN &kp LEFT  &kp DOWN  &kp RIGHT &none           &kp ENTER
+        &kp LSHIFT  &Kp Z     &kp X   &kp C     &kp V     &kp B     &none         &none     &none     &none     &none           &kp RSHIFT
+        &kp LCTRL   &kp LMETA &to NAV &kp LALT  &kp SPACE &none     &mo LAY_2     &kp SPACE &kp RALT  &kp K_APP &kp RMETA       &kp RCTRL
+      >;
+    }; // End of 'lay2_layer'.
+    lay3_layer {
+      display-name = "Blue";
+// -------------------------------------------------------------------------------------------
+// Note: Bluetooth command of disconnect can only disconnect specific profile.
+//       If you want to change the number of available profiles,
+//       set 'CONFIG_BT_MAX_CONN' and 'CONFIG_BT_MAX_PAIRED' in zmk '.conf' file,
+//       with 'n+1' for a split keyboard.
+//       The profile index is 0-based.
+// -------------------------------------------------------------------------------------------
+// DEFAULT  BT_DISC 0 BT_DISC 1 BT_DISC 2 BT_PRV  &none   &none &none &none &none &none &none
+// &none    &none   &none       &none     BT_NXT  &none   &none &none &none &none &none &none
+// &none    &none   BT_CLR_ALL  BT_CLR    &none   &none   &none &none &none &none &none &none
+// &none    &none   &tog LAY_3  &none     &none   &none   &none &none &none &none &none &none
+// -------------------------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &bt BT_DISC 0 &bt BT_DISC 1   &bt BT_DISC 2 &bt BT_PRV  &none     &none &none &none &none &none &none
+        &none       &none         &none           &none         &bt BT_NXT  &none     &none &none &none &none &none &none
+        &none       &none         &bt BT_CLR_ALL  &bt BT_CLR    &none       &none     &none &none &none &none &none &none
+        &none       &none         &tog LAY_3      &none         &none       &none     &none &none &none &none &none &none
+      >;
+    }; // End of 'lay3_layer'.
+    lay4_layer {
+      display-name = "Volume";
+// ----------------------------------------------------------------------------
+// DEFAULT &none &none &none Down  &none   &none &none &none &none &none &none
+// &none   &none &none &none Up    &none   &none &none &none &none &none &none
+// &none   &none Mute  &none &none &none   &none &none &none &none &none &none
+// &none   &none NAV   &none &none &none   &none &none &none &none &none &none
+// ----------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &none       &none &kp C_VOLUME_DOWN &none     &none &none &none &none &none &none
+        &none       &none &none       &none &kp C_VOLUME_UP   &none     &none &none &none &none &none &none
+        &none       &none &kp C_MUTE  &none &none             &none     &none &none &none &none &none &none
+        &none       &none &tog NAV    &none &none             &none     &none &none &none &none &none &none
+      >;
+    }; // End of 'lay4_layer'.
+    lay5_layer {
+      display-name = "Display";
+// ----------------------------------------------------------------------------
+// DEFAULT &none &none &none Down  &none    &none &none &none &none &none &none
+// &none   &none &none &none Up    &none    &none &none &none &none &none &none
+// &none   &none &none &none &none &none    &none &none &none &none &none &none
+// &none   &none NAV   &none &none &none    &none &none &none &none &none &none
+// ----------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &none    &none &kp C_BRIGHTNESS_DEC &none    &none &none &none &none &none &none
+        &none       &none &none    &none &kp C_BRIGHTNESS_INC &none    &none &none &none &none &none &none
+        &none       &none &none    &none &none                &none    &none &none &none &none &none &none
+        &none       &none &tog NAV &none &none                &none    &none &none &none &none &none &none
+      >;
+    }; // End of 'lay4_layer'.
+    nav_layer {
+    // The 'NAV' layer, this layer should be defined after all layers.
+      display-name = "Nav";
+// -------------------------------------------------------------------------------------------
+// DEFAULT  &none   &none     &none   &none   &none       &none &none &none &none &none &none
+// &none    &none   Screen    &none   &none   Game        &none &none &none &none &none &none
+// &none    &none   &none     &none   Volume  Bluetooth   &none &none &none &none &none &none
+// &none    &none   &tog NAV  &none   &none   &none       &none &none &none &none &none &none
+// -------------------------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &none     &none &none     &none       &none &none &none &none &none &none
+        &none       &none &to LAY_5 &none &none     &to LAY_2   &none &none &none &none &none &none
+        &none       &none &none     &none &to LAY_4 &to LAY_3   &none &none &none &none &none &none
+        &none       &none &tog NAV  &none &none     &none       &none &none &none &none &none &none
+      >;
+    }; // End of 'nav_layer'.
+  }; // End of 'keymap'.
+}; // End.

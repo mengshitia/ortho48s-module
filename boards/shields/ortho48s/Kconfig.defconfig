@@ -1,0 +1,17 @@
+# For a split keyboard,
+# the keyboard name is assigned to the central,
+# the peripheral side is not assigned a name.
+# Name should less than 16 characters.
+if SHIELD_MY_KEYBOARD_LEFT
+  config ZMK_KEYBOARD_NAME
+    default "Ortho48s"
+
+  config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+endif
+
+# The split config needs to be set for both sides.
+if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
+  config ZMK_SPLIT
+    default y
+endif

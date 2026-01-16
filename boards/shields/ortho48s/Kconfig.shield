@@ -1,0 +1,8 @@
+# This is a split keyboard contains two halves,
+# the names should be 'my_name_left' and 'my_name_right'.
+# No whitespaces after the comma or in the name of keyboard.
+config SHIELD_MY_KEYBOARD_LEFT
+  def_bool $(shields_list_contains,ortho48s_left)
+
+config SHIELD_MY_KEYBOARD_RIGHT
+  def_bool $(shields_list_contains,ortho48s_right)
