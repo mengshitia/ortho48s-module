@@ -1,6 +1,8 @@
 // Devicetree source file, use for both halves.
-// Matrix Transform.
+// Matrix Transform:
 #include <dt-bindings/zmk/matrix_transform.h>
+// Include physical layout:
+#include "ortho48s-layout.dtsi"
 
 // Shared kscan definations:
 / {
@@ -30,23 +32,9 @@
   };
 };
 
-// Physical layout.
-// Should be placed here because this is a split keyboard.
-/ {
-  physical_layout0: physical_layout0 {
-    compatible = "zmk,physical-layout";
-    display-name = "Default Layout";
-    // Label of the kscan node,
-    // optional if all layouts use the same.
-    kscan = <&kscan0>;
-    // Label of the matrix transform for this layout.
-    transform = <&default_transform>;
-  };
-};
 
 // Chosen Node.
 // Set the 'chosen' node to a defined "default" physical layout.
-// Should be placed in the same file as the physical layout.
 / {
   chosen {
     zmk,physical-layout = &physical_layout0;
