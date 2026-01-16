@@ -23,5 +23,5 @@
 // Transform offset,
 // because the left half has 6 columns.
 &default_transform {
-  col-offset = <3>;
+  col-offset = <6>;
 };
