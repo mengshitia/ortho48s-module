@@ -8,16 +8,16 @@ if SHIELD_MY_KEYBOARD_LEFT
 
   config ZMK_SPLIT_ROLE_CENTRAL
     default y
-endif
-
-# The split config needs to be set for both sides.
-if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
-  config ZMK_SPLIT
-    default y
 
   config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
     default y
 
   config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_PROXY
+    default y
+endif
+
+# The split config needs to be set for both sides.
+if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
+  config ZMK_SPLIT
     default y
 endif
