@@ -1,23 +1,49 @@
-# For a split keyboard,
-# the keyboard name is assigned to the central,
-# the peripheral side is not assigned a name.
-# Name should less than 16 characters.
+# Kconfig.defconfig
+
 if SHIELD_MY_KEYBOARD_LEFT
+  # For a split keyboard,
+  # the keyboard name is assigned to the central,
+  # the peripheral side is not assigned a name.
+  # Name should less than 16 characters.
   config ZMK_KEYBOARD_NAME
     default "Ortho48s"
 
+  # Set the split central.
   config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+  # Enable fetching peripheral's batter level.
   config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
     default y
-
   config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_PROXY
     default y
+
 endif
 
 # The split config needs to be set for both sides.
 if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
   config ZMK_SPLIT
+    default y
+
+  # Enable NKRO:
+  config ZMK_HID_REPORT_TYPE_NKRO
+    default y
+
+  # Idle and sleep timeout, in milliseconds.
+  config ZMK_IDLE_TIMEOUT
+    default 60000 # 60s
+  config ZMK_SLEEP
+    default y
+  config ZMK_IDLE_SLEEP_TIMEOUT
+    default 900000 # 900s(15min)
+
+  # Enable soft off from keymap.
+  config ZMK_PM_SOFT_OFF
+    default y
+
+  # Battery status on display(display must be available).
+  config ZMK_WIDGET_BATTERY_STATUS
+    default y
+  config ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE
     default y
 endif

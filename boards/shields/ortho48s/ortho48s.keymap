@@ -1,11 +1,12 @@
 // Keymap for ortho48s.
-#include <behaviors.dtsi>
 // General keycodes:
 #include <dt-bindings/zmk/keys.h>
 // Bluetooth commands:
 #include <dt-bindings/zmk/bt.h>
 // Output selection commands:
 #include <dt-bindings/zmk/outputs.h>
+// External power control:
+#include <dt-bindings/zmk/ext_power.h>
 
 #define DEFAULT 0
 // The Default layer, QWERTY layout,
@@ -38,7 +39,16 @@
 #define LAY_5 5
 // This layer is used to adjust the brightness of the screen.
 
-#define NAV 6
+#define LAY_6 6
+// Media playback control: Play, Pause, Stop, Previous and Next.
+
+#define LAY_7 7
+// Output selection: choose USB or Bluetooth.
+
+#define LAY_8 8
+// Soft off, reset and reset to bootloader.
+
+#define NAV 9
 // This layer sets several entrance for other layers:
 // Bluetooth(b), Game(g), Volume(v), Screen Brightness(s)...
 
@@ -101,15 +111,15 @@
 //       The profile index is 0-based.
 // -------------------------------------------------------------------------------------------
 // DEFAULT  BT_DISC 0 BT_DISC 1 BT_DISC 2 BT_PRV  &none   &none &none &none &none &none &none
-// &none    &none   &none       &none     BT_NXT  &none   &none &none &none &none &none &none
+// &none    BT_DISC 3 BT_DISC 4 &none     BT_NXT  &none   &none &none &none &none &none &none
 // &none    &none   BT_CLR_ALL  BT_CLR    &none   &none   &none &none &none &none &none &none
-// &none    &none   &tog LAY_3  &none     &none   &none   &none &none &none &none &none &none
+// &none    &none   NAV         &none     &none   &none   &none &none &none &none &none &none
 // -------------------------------------------------------------------------------------------
       bindings = <
         &to DEFAULT &bt BT_DISC 0 &bt BT_DISC 1   &bt BT_DISC 2 &bt BT_PRV  &none     &none &none &none &none &none &none
-        &none       &none         &none           &none         &bt BT_NXT  &none     &none &none &none &none &none &none
+        &none       &bt BT_DISC 3 &bt BT_DISC 4   &none         &bt BT_NXT  &none     &none &none &none &none &none &none
         &none       &none         &bt BT_CLR_ALL  &bt BT_CLR    &none       &none     &none &none &none &none &none &none
-        &none       &none         &tog LAY_3      &none         &none       &none     &none &none &none &none &none &none
+        &none       &none         &to NAV         &none         &none       &none     &none &none &none &none &none &none
       >;
     }; // End of 'lay3_layer'.
     lay4_layer {
@@ -124,38 +134,86 @@
         &to DEFAULT &none &none       &none &kp C_VOLUME_DOWN &none     &none &none &none &none &none &none
         &none       &none &none       &none &kp C_VOLUME_UP   &none     &none &none &none &none &none &none
         &none       &none &kp C_MUTE  &none &none             &none     &none &none &none &none &none &none
-        &none       &none &tog NAV    &none &none             &none     &none &none &none &none &none &none
+        &none       &none &to NAV     &none &none             &none     &none &none &none &none &none &none
       >;
     }; // End of 'lay4_layer'.
     lay5_layer {
       display-name = "Display";
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // DEFAULT &none &none &none Down  &none    &none &none &none &none &none &none
 // &none   &none &none &none Up    &none    &none &none &none &none &none &none
 // &none   &none &none &none &none &none    &none &none &none &none &none &none
 // &none   &none NAV   &none &none &none    &none &none &none &none &none &none
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
       bindings = <
-        &to DEFAULT &none &none    &none &kp C_BRIGHTNESS_DEC &none    &none &none &none &none &none &none
-        &none       &none &none    &none &kp C_BRIGHTNESS_INC &none    &none &none &none &none &none &none
-        &none       &none &none    &none &none                &none    &none &none &none &none &none &none
-        &none       &none &tog NAV &none &none                &none    &none &none &none &none &none &none
+        &to DEFAULT &none &none   &none &kp C_BRIGHTNESS_DEC &none    &none &none &none &none &none &none
+        &none       &none &none   &none &kp C_BRIGHTNESS_INC &none    &none &none &none &none &none &none
+        &none       &none &none   &none &none                &none    &none &none &none &none &none &none
+        &none       &none &to NAV &none &none                &none    &none &none &none &none &none &none
       >;
-    }; // End of 'lay4_layer'.
+    }; // End of 'lay5_layer'.
+    lay6_layer {
+      display-name = "Media";
+// -------------------------------------------------------------------------------------
+// DEFAULT &none &none &none      Previous &none    &none &none &none &none &none &none
+// &none   &none Stop  Pause,Play Next     &none    &none &none &none &none &none &none
+// &none   &none &none &none      &none    &none    &none &none &none &none &none &none
+// &none   &none NAV   &none      &none    &none    &none &none &none &none &none &none
+// -------------------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &none       &none             &kp C_PREVIOUS  &none    &none &none &none &none &none &none
+        &none       &none &kp C_STOP  &kp C_PLAY_PAUSE  &kp C_NEXT      &none    &none &none &none &none &none &none
+        &none       &none &none       &none             &none           &none    &none &none &none &none &none &none
+        &none       &none &to NAV     &none             &none           &none    &none &none &none &none &none &none
+      >;
+    }; // End of 'lay6_layer'.
+    lay7_layer {
+      display-name = "Output";
+// -----------------------------------------------------------------------------
+// DEFAULT &none USB   &none &none &none    &none &none &none &none &none &none
+// &none   &none &none &none &none &none    &none &none &none &none &none &none
+// &none   &none &none &none &none BLE      &none &none &none &none &none &none
+// &none   &none NAV   &none &none &none    &none &none &none &none &none &none
+// -----------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &out OUT_USB  &none &none &none           &none &none &none &none &none &none
+        &none       &none &none         &none &none &none           &none &none &none &none &none &none
+        &none       &none &none         &none &none &out OUT_BLE    &none &none &none &none &none &none
+        &none       &none &to NAV       &none &none &none           &none &none &none &none &none &none
+      >;
+    }; // End of 'lay7_layer'.
+    lay8_layer {
+      display-name = "Control";
+// -------------------------------------------------------------------------------------
+// Note: Both basic and bootloader reset behaviors are source-specific,
+//       which means both halves should be configured.
+// ------------------------------------------------------------------------------------------
+// DEFAULT &none &none    &none Reset &none         &none &none &none Reset      &none &none
+// &none   &none Soft-off &none &none &none         &none &none &none Bootloader &none &none
+// &none   &none &none    &none &none Bootloader    &none &none &none &none      &none &none
+// &none   &none NAV      &none &none &none         &none &none &none &none      &none &none
+// ------------------------------------------------------------------------------------------
+      bindings = <
+        &to DEFAULT &none &none     &none &sys_reset  &none           &none &none &none &sys_reset  &none &none
+        &none       &none &soft_off &none &none       &none           &none &none &none &bootloader &none &none
+        &none       &none &none     &none &none       &bootloader     &none &none &none &none       &none &none
+        &none       &none &to NAV   &none &none       &none           &none &none &none &none       &none &none
+      >;
+    }; // End of 'lay8_layer'.
     nav_layer {
     // The 'NAV' layer, this layer should be defined after all layers.
       display-name = "Nav";
 // -------------------------------------------------------------------------------------------
 // DEFAULT  &none   &none     &none   &none   &none       &none &none &none &none &none &none
-// &none    &none   Screen    &none   &none   Game        &none &none &none &none &none &none
+// &none    &none   &none     Screen  &none   Game        &none &none &none &none &none &none
 // &none    &none   &none     &none   Volume  Bluetooth   &none &none &none &none &none &none
 // &none    &none   &tog NAV  &none   &none   &none       &none &none &none &none &none &none
 // -------------------------------------------------------------------------------------------
       bindings = <
-        &to DEFAULT &none &none     &none &none     &none       &none &none &none &none &none &none
-        &none       &none &to LAY_5 &none &none     &to LAY_2   &none &none &none &none &none &none
-        &none       &none &none     &none &to LAY_4 &to LAY_3   &none &none &none &none &none &none
-        &none       &none &tog NAV  &none &none     &none       &none &none &none &none &none &none
+        &to DEFAULT &none &none     &to LAY_6 &none     &none       &none &none &none &none &none &none
+        &none       &none &none     &to LAY_5 &none     &to LAY_2   &none &none &none &none &none &none
+        &none       &none &none     &to LAY_7 &to LAY_4 &to LAY_3   &none &none &none &none &none &none
+        &none       &none &tog NAV  &none     &none     &none       &none &none &none &none &none &none
       >;
     }; // End of 'nav_layer'.
   }; // End of 'keymap'.
