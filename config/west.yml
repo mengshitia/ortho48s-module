@@ -7,6 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
+      # pin to v0.3 branch instead of main
       revision: v0.3
       import: app/west.yml
   self:

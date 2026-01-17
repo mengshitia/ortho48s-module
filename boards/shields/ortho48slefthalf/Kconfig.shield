@@ -1,2 +1,0 @@
-config SHIELD_ORTHO48SLEFTHALF
-  def_bool $(shields_list_contains,ortho48slefthalf)
