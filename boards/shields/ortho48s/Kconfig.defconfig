@@ -37,9 +37,4 @@ if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
   config ZMK_PM_SOFT_OFF
     default y
 
-  # Battery status on display(display must be available).
-  config ZMK_WIDGET_BATTERY_STATUS
-    default y
-  config ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE
-    default y
 endif
