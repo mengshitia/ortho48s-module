@@ -205,15 +205,15 @@
     // The 'NAV' layer, this layer should be defined after all layers.
       display-name = "Nav";
 // -------------------------------------------------------------------------------------------
-// DEFAULT  &none   &none     &none   &none   &none       &none &none &none &none &none &none
+// DEFAULT  &none   &none     Media   &none   Output      &none &none &none &none &none &none
 // &none    &none   &none     Screen  &none   Game        &none &none &none &none &none &none
-// &none    &none   &none     &none   Volume  Bluetooth   &none &none &none &none &none &none
+// &none    &none   &none     Control Volume  Bluetooth   &none &none &none &none &none &none
 // &none    &none   &tog NAV  &none   &none   &none       &none &none &none &none &none &none
 // -------------------------------------------------------------------------------------------
       bindings = <
-        &to DEFAULT &none &none     &to LAY_6 &none     &none       &none &none &none &none &none &none
+        &to DEFAULT &none &none     &to LAY_6 &none     &to LAY_7   &none &none &none &none &none &none
         &none       &none &none     &to LAY_5 &none     &to LAY_2   &none &none &none &none &none &none
-        &none       &none &none     &to LAY_7 &to LAY_4 &to LAY_3   &none &none &none &none &none &none
+        &none       &none &none     &to LAY_8 &to LAY_4 &to LAY_3   &none &none &none &none &none &none
         &none       &none &tog NAV  &none     &none     &none       &none &none &none &none &none &none
       >;
     }; // End of 'nav_layer'.
