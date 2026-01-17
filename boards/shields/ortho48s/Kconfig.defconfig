@@ -25,10 +25,6 @@ if SHIELD_MY_KEYBOARD_LEFT || SHIELD_MY_KEYBOARD_RIGHT
   config ZMK_SPLIT
     default y
 
-  # Enable NKRO:
-  config ZMK_HID_REPORT_TYPE_NKRO
-    default y
-
   # Idle and sleep timeout, in milliseconds.
   config ZMK_IDLE_TIMEOUT
     default 60000 # 60s
