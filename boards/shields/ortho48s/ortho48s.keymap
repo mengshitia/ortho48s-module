@@ -1,4 +1,5 @@
 // Keymap for ortho48s.
+#include <behaviors.dtsi>
 // General keycodes:
 #include <dt-bindings/zmk/keys.h>
 // Bluetooth commands:
